@@ -3,9 +3,11 @@ name: Test CI Workflow
 on:
   push:
     paths:
+      - '.github/workflows/test.yml'
       - 'A1_KaungHtetCho/**'
   pull_request:
     paths:
+      - '.github/workflows/test.yml'
       - 'A1_KaungHtetCho/**'
 
 jobs:
