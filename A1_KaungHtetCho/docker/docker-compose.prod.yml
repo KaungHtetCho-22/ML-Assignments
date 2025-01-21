@@ -6,5 +6,5 @@ services:
       - WEIGHTS=/models/car_price.model
     volumes:
       - ${PWD}/models/:/app/weights
-    stdin_open: true        # Enables interactive mode
+    stdin_open: true        
     tty: true  
