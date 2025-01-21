@@ -1,6 +1,6 @@
 #!/bin/env bash
 
 docker build \
-	-t A1_assignment:prod \
+	-t a1_assignment:prod \
 	--target prod \
 	-f docker/Dockerfile .
