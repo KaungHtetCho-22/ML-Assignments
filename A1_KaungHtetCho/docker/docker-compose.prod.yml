@@ -1,0 +1,58 @@
+# services:
+#   db:
+#     build: 
+#       context: ../biosound_db
+#       dockerfile: Dockerfile
+#     container_name: biosound_db
+#     environment:
+#       MYSQL_DATABASE: species_db
+#       MYSQL_USER: biosound_user
+#       MYSQL_PASSWORD: biosound_password
+#       MYSQL_ROOT_PASSWORD: rootpassword
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - db_data:/var/lib/mysql
+#     networks:
+#       - biosound_network
+#   audio_processor:
+#     build: 
+#       context: ..
+#       dockerfile: docker/Dockerfile
+#     container_name: audio_processor
+#     depends_on:
+#       - db
+#     environment:
+#       DB_URL: "mysql+mysqlconnector://biosound_user:biosound_password@biosound_db/species_db"
+#       APP_DATA_DIR: /app/app-data
+#       AUDIO_CLASSIFIER_WEIGHTS: /app/weights/ait_bird_local_eca_nfnet_l0/fold_0_model.pt
+#       AUDIO_DATA_DIR: /app/audio_data
+#     volumes:
+#       - ${AUDIO_DATA_DIR}:/app/audio_data
+#       - ${AUDIO_DATA_DIR}:/app/audio_data
+#       - ${PWD}/app-data:/app/app-data
+#       # - ${PWD}/weights:/app/weights
+#     networks:
+#       - biosound_network
+#     shm_size: '1g'
+
+# networks:
+#   biosound_network:
+
+# volumes:
+#   db_data:
+
+
+services:
+  audio_processor:
+    image: A1_assignment:prod
+    container_name: audio_processor
+    environment:
+      - AUDIO_DATA_DIR=/app/audio_data
+      - APP_DATA_DIR=/app/app-data
+      - AUDIO_CLASSIFIER_WEIGHTS=/app/weights/ait_bird_local_eca_nfnet_l0/fold_0_model.pt
+    volumes:
+      - ${AUDIO_DATA_DIR}:/app/audio_data
+      - ${PWD}/app-data:/app/app-data
+      - ${PWD}/weights/:/app/weights
+    shm_size: '512m'

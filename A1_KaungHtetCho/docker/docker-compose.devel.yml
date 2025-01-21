@@ -1,0 +1,19 @@
+services:
+  audio_processor:
+    image: A1_assignment:devel
+    container_name: audio_processor
+    stdin_open: true
+    tty: true
+    shm_size: '1g'
+    working_dir: ${PWD}
+    environment:
+      - PYTHONPATH=${PWD}
+      - AUDIO_DATA_DIR=/app/audio_data
+      - APP_DATA_DIR=/app/app-data
+      - AUDIO_CLASSIFIER_WEIGHTS=/app/weights/ait_bird_local_eca_nfnet_l0/fold_0_model.pt
+    volumes:
+      - ${PWD}:${PWD}
+      - ${AUDIO_DATA_DIR}:/app/audio_data
+      - ${PWD}/app-data:/app/app-data
+      - ${PWD}/weights/:/app/weights
+    entrypoint: ["/bin/bash"]
