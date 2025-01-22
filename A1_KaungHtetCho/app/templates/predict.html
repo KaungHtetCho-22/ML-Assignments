@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Car Price Prediction Result</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-
-    <h1>Car Price Prediction Result</h1>
-
     <div class="container">
-        <p id="predicted-price"></p>
+        <h1>Prediction Result</h1>
+        <p>The predicted car price is: {{ predicted_price }} Baht</p>
+        <a href="/">Go Back</a>
     </div>
-
-    <script>
-        const predictedPrice = window.opener.document.getElementById('result').textContent;
-        document.getElementById('predicted-price').textContent = "The predicted car price is: ₱" + predictedPrice + " Baht";
-    </script>
 </body>
 </html>
