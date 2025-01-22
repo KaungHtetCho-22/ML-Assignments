@@ -1,38 +1,61 @@
-/* Add your CSS styling here for better presentation */
 body {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
 }
 
 .container {
-    width: 400px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-input[type="number"] {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+input, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #5cb85c;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 3px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-#result {
+button:hover {
+    background-color: #4cae4c;
+}
+
+a {
+    display: block;
     margin-top: 20px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
