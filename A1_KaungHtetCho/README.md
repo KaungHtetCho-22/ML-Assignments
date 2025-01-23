@@ -24,6 +24,8 @@ For the assignment, only the **production environment** is relevant. The develop
 
 ### Steps to Build and Run  
 
+Clone the repository first **https://github.com/KaungHtetCho-22/ML-Assignments.git** 
+
 1. **Build the production Docker image:**  
    ```bash
    sudo sh A1_KaungHtetCho/build_prod_img.sh
