@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Prediction for Chaky's Company</h1>
+        <p>In order to predict car price, you need to choose maximum power, mileage, and year.</p>
+        <p>If you don't know maximum power and mileage, you can use provided default values to help you to predict car price.</p>
+        <form action="/predict" method="post">
+            <label for="max_power">Max Power (bhp):</label>
+            <input type="text" id="max_power" name="max_power" value="{{ max_power_default }}"><br><br>
+            <label for="mileage">Mileage (kmpl):</label>
+            <input type="text" id="mileage" name="mileage" value="{{ mileage_default }}"><br><br>
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ year_default }}"><br><br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+services:
+  a1_assignment:
+    image: a1_assignment:devel
+    container_name: a1
+    stdin_open: true
+    tty: true
+    working_dir: ${PWD}
+    environment:
+      - PYTHONPATH=${PWD}
+    volumes:
+      - ${PWD}:${PWD}
+      # - ${PWD}/weights/:/models/weights
+    entrypoint: ["/bin/bash"]
