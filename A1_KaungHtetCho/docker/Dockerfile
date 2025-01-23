@@ -25,7 +25,7 @@ FROM python:3.12 AS prod
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY A1_KaungHtetCho/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -33,6 +33,6 @@ COPY . .
 
 ENV PYTHONPATH=/app
 
-# CMD ["python", "app/app.py"]
+CMD ["python", "A1_KaungHtetCho/app/app.py"]
 
-CMD ["/bin/bash"]
+# CMD ["/bin/bash"]
