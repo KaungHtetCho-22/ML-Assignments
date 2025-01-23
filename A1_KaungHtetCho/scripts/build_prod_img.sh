@@ -3,4 +3,4 @@
 docker build \
 	-t a1_assignment:prod \
 	--target prod \
-	-f docker/Dockerfile .
+	-f A1_KaungHtetCho/docker/Dockerfile .
