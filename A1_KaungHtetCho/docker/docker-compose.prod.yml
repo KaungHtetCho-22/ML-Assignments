@@ -1,13 +1,14 @@
+version: '3.8'
+
 services:
   a1_assignment:
     image: a1_assignment:prod
     container_name: a1
-    environment:
-      - WEIGHTS=/models/car_price.model
-    volumes:
-      - ${PWD}/models/:/app/weights
+    # environment:
+    #   - WEIGHTS=/models/car_price.model
+    # volumes:
+    #   - ./models:/app/weights  
     ports:
-      - "8000:8000"  # Expose Flask app on port 8000
+      - "8000:8000"  
     stdin_open: true        
-    tty: true  
-    # network_mode: bridge  # or host
+    tty: true

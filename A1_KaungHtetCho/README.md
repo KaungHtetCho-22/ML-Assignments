@@ -26,10 +26,12 @@ For the assignment, only the **production environment** is relevant. The develop
 
 Clone the repository first **https://github.com/KaungHtetCho-22/ML-Assignments.git** 
 
-1. **Build the production Docker image:**  
+1. **How to build the production Docker image:**  
    ```bash
-   sudo sh A1_KaungHtetCho/build_prod_img.sh
+   sudo sh A1_KaungHtetCho/scripts/build_prod_img.sh
     ```
+**I've already pushed the image to Docker Hub, so you can skip the build step and simply pull it and run with below docker compose**
+
 2. **Run the Production Container** 
 #### To run in detached mode:  
 ```bash
@@ -45,7 +47,7 @@ docker-compose -f A1_KaungHtetCho/docker/docker-compose.prod.yml up
 #### Development Setup (Optional for Testing and not intended for assignment submission)
 1. **Build the development Docker image:**  
    ```bash
-   sudo sh A1_KaungHtetCho/build_devel_img.sh
+   sudo sh A1_KaungHtetCho/scripts/build_devel_img.sh
     ```
 2. **Run the development Container** 
 #### To run in detached mode:  
