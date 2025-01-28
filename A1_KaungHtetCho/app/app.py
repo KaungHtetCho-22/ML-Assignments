@@ -6,7 +6,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the dictionary from the file
-with open('A1_KaungHtetCho/models/car_price.model', 'rb') as file:
+with open('models/car_price.model', 'rb') as file:
     loaded_model = pickle.load(file)
 
 # Access individual components
