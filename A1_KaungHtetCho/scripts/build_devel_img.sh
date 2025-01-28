@@ -6,4 +6,5 @@ docker build \
 	--build-arg="USER_GID=`(id -g)`" \
 	-t a1_assignment:devel \
 	--target devel \
-	-f docker/Dockerfile .
+	-f A1_KaungHtetCho/docker/Dockerfile \
+    A1_KaungHtetCho
