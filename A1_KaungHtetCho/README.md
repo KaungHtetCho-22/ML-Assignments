@@ -30,7 +30,7 @@ Clone the repository first **https://github.com/KaungHtetCho-22/ML-Assignments.g
    ```bash
    sudo sh A1_KaungHtetCho/scripts/build_prod_img.sh
     ```
-**I've already pushed the image to Docker Hub, so you can skip the build step and simply pull it and run with below docker compose**
+**Note: The image is already on Docker Hub - you can simply pull and run it, though build instructions are included in the compose file as a backup option.**
 
 2. **Run the Production Container** 
 #### To run in detached mode:  
