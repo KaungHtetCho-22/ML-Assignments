@@ -33,6 +33,6 @@ COPY . .
 
 ENV PYTHONPATH=/app
 
-CMD ["python", "A1_KaungHtetCho/app/app.py"]
+CMD ["python", "app/app.py"]
 
 # CMD ["/bin/bash"]
