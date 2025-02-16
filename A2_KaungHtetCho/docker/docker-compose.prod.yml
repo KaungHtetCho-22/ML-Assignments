@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  st124092-a2:
+    container_name: st124092_a2_container  
+    image: koala007/a2_assignment:prod  
+    platform: linux/x86_64
+    environment:
+      - HOST=0.0.0.0
+      - PORT=7000
+    ports:
+      - "7000:7000"
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.web-st124092.loadbalancer.server.port=7000
+      - traefik.http.routers.web-st124092.tls=true
+      - traefik.http.routers.web-st124092.rule=Host(`st124092.mlflow.ml.brain.cs.ait.ac.th`)
+      - traefik.http.routers.web-st124092.tls.certresolver=production
+      - traefik.http.routers.web-st124092.entrypoints=websecure
+    networks:
+      - default
+      - traefik_default
+
+networks:
+  default:
+  traefik_default:
+    external: true

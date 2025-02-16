@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Model Prediction</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/predict_new">New Model</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Car Price Prediction - Old Model</h1>
+        <form action="/process-data-old" method="post">
+            <label for="max_power">Max Power:</label>
+            <input type="text" id="max_power" name="max_power" value="{{ max_power_default }}" required>
+            
+            <label for="mileage">Mileage:</label>
+            <input type="text" id="mileage" name="mileage" value="{{ mileage_default }}" required>
+            
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ year_default }}" required>
+
+            <label for="engine">Engine:</label>
+            <input type="text" id="engine" name="engine" value="{{ engine_default }}" required>
+            
+            <button type="submit">Predict Price</button>
+        </form>
+        <div id="result-old"></div>
+    </div>
+</body>
+</html>
