@@ -13,17 +13,21 @@ with open(os.path.join('models/', 'car_price_old.model'), 'rb') as file:
 with open(os.path.join('models/', 'car_price_new.model'), 'rb') as file:
     new_loaded_model = pickle.load(file)
 
-old_model = old_loaded_model['model']
-old_scaler = old_loaded_model['scaler']
+old_model             = old_loaded_model['model']
+old_scaler            = old_loaded_model['scaler']
 old_max_power_default = old_loaded_model.get('max_power')  
-old_mileage_default = old_loaded_model.get('mileage')  
-old_year_default = old_loaded_model.get('year')  
+old_mileage_default   = old_loaded_model.get('mileage')  
+old_year_default      = old_loaded_model.get('year')  
+old_engine_default    = old_loaded_model.get('engine')  
 
-new_model = new_loaded_model['model']
-new_scaler = new_loaded_model['scaler']
+
+new_model             = new_loaded_model['model']
+new_scaler            = new_loaded_model['scaler']
 new_max_power_default = new_loaded_model.get('max_power')
-new_mileage_default = new_loaded_model.get('mileage')
-new_year_default = new_loaded_model.get('year')
+new_mileage_default   = new_loaded_model.get('mileage')
+new_year_default      = new_loaded_model.get('year')
+new_engine_default    = new_loaded_model.get('engine')
+
 
 @app.route('/')
 def index():
@@ -36,7 +40,8 @@ def predict_new():
         'predict_new.html',
         max_power_default=new_max_power_default,
         mileage_default=new_mileage_default,
-        year_default=new_year_default
+        year_default=new_year_default,
+        engine_default=new_engine_default
     )
 
 @app.route('/predict_old')
@@ -45,7 +50,8 @@ def predict_old():
         'predict_old.html',
         max_power_default=old_max_power_default,
         mileage_default=old_mileage_default,
-        year_default=old_year_default
+        year_default=old_year_default,
+        engine_default=old_engine_default
     )
 
 
@@ -53,44 +59,48 @@ def predict_old():
 def process_data_old():
     if request.method == 'POST':
         max_power = request.form.get('max_power', old_max_power_default)
-        mileage = request.form.get('mileage', old_mileage_default)
-        year = request.form.get('year', old_year_default)
+        mileage   = request.form.get('mileage', old_mileage_default)
+        year      = request.form.get('year', old_year_default)
+        engine    = request.form.get('engine', old_engine_default)
 
         max_power = float(max_power) if max_power else old_max_power_default
-        mileage = float(mileage) if mileage else old_mileage_default
-        year = int(year) if year else old_year_default
+        mileage   = float(mileage) if mileage else old_mileage_default
+        year      = int(year) if year else old_year_default
+        engine    = int(engine) if engine else old_engine_default
 
-        result = str(int(prediction_old(max_power, mileage, year)[0]))
+        result = str(int(prediction_old(max_power, mileage, year, engine)[0]))
         return result
 
 # Prediction function for old model
-def prediction_old(max_power, mileage, year):
-    sample = np.array([[max_power, mileage, year]])
+def prediction_old(max_power, mileage, year, engine):
+    sample        = np.array([[max_power, mileage, year, engine]])
     sample_scaled = old_scaler.transform(sample)
-    result = np.exp(old_model.predict(sample_scaled))
+    result        = np.exp(old_model.predict(sample_scaled))
     return result
 
 @app.route('/process-data-new', methods=['POST'])
 def process_data_new():
     if request.method == 'POST':
         max_power = request.form.get('max_power', new_max_power_default)
-        mileage = request.form.get('mileage', new_mileage_default)
-        year = request.form.get('year', new_year_default)
+        mileage   = request.form.get('mileage', new_mileage_default)
+        year      = request.form.get('year', new_year_default)
+        engine    = request.form.get('engine', new_engine_default)
 
         max_power = float(max_power) if max_power else new_max_power_default
-        mileage = float(mileage) if mileage else new_mileage_default
-        year = int(year) if year else new_year_default
+        mileage   = float(mileage) if mileage else new_mileage_default
+        year      = int(year) if year else new_year_default
+        engine    = int(engine) if engine else new_engine_default
 
-        result = str(int(prediction_new(max_power, mileage, year)[0]))
+        result = str(int(prediction_new(max_power, mileage, year, engine)[0]))
         return result
 
 # Prediction function for new model
-def prediction_new(max_power, mileage, year):
-    sample = np.array([[max_power, mileage, year]])
+def prediction_new(max_power, mileage, year, engine):
+    sample        = np.array([[max_power, mileage, year, engine]])
     sample_scaled = new_scaler.transform(sample)
-    intercept = np.ones((sample_scaled.shape[0], 1))
+    intercept     = np.ones((sample_scaled.shape[0], 1))
     sample_scaled = np.concatenate((intercept, sample_scaled), axis=1)
-    result = np.exp(new_model.predict(sample_scaled))
+    result        = np.exp(new_model.predict(sample_scaled))
     return result
 
 if __name__ == '__main__':

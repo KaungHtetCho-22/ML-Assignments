@@ -1,7 +1,7 @@
 import numpy as np
 
 class LinearRegression:
-    def __init__(self, regularization=None, lr=0.001, method='batch', init_method='xavier', momentum=0.0):
+    def __init__(self, regularization, lr, method, init_method, momentum):
         self.lr = lr
         self.method = method
         self.regularization = regularization
@@ -9,8 +9,8 @@ class LinearRegression:
         self.momentum = momentum
 
     def predict(self, X):
-        return X @ self.theta  # Assumes theta has been set
+        return X @ self.theta 
 
 class Normal(LinearRegression):
-    def __init__(self, method='batch', lr=0.001, init_method='xavier', momentum=0.0):
-        super().__init__(None, lr, method, init_method=init_method, momentum=momentum)
+    def __init__(self, grad, lr, init_theta, momentum):
+        super().__init__(None, lr, grad, init_theta, momentum)
