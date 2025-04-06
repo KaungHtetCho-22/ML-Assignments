@@ -1,0 +1,15 @@
+services:
+  a3_assignment:
+    image: a3_assignment:devel
+    container_name: a3
+    stdin_open: true
+    tty: true
+    working_dir: ${PWD}
+    environment:
+      - PYTHONPATH=${PWD}
+    volumes:
+      - ${PWD}:${PWD}
+    entrypoint: ["/bin/bash"]
+    ports:
+      - "7000:7000"  
+
