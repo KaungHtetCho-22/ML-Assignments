@@ -38,15 +38,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: 🔍 Show Dockerfile path
-        run: ls -l A3_KaungHtetCho/docker
         
       - name: Build and push Docker image (prod stage)
         uses: docker/build-push-action@v5
         with:
             context: A3_KaungHtetCho/docker
-            file: Dockerfile
+            file: A3_KaungHtetCho/docker/Dockerfile
             push: true
             target: prod
             tags: koala007/a3_assignment:${{ github.ref_name }}
