@@ -42,7 +42,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: .Dockerfile
+          file: A3_KaungHtetCho/Dockerfile
           push: true
           target: prod
           tags: koala007/a3_assignment:${{ github.ref_name }}
