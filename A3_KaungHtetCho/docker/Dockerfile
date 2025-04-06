@@ -26,7 +26,7 @@ FROM python:3.12 AS prod
 
 WORKDIR /app
 
-COPY A2_KaungHtetCho/requirements.txt .
+COPY A3_KaungHtetCho/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
