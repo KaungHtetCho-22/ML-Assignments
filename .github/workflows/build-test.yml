@@ -39,6 +39,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: 🔍 Show Dockerfile path
+        run: ls -l A3_KaungHtetCho/docker
+        
       - name: Build and push Docker image (prod stage)
         uses: docker/build-push-action@v5
         with:
