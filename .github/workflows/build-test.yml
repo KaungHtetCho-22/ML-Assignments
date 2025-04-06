@@ -6,7 +6,7 @@ on:
     tags:
       - 'v*'
 
-      
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -42,11 +42,11 @@ jobs:
       - name: Build and push Docker image (prod stage)
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: A3_KaungHtetCho/Dockerfile
-          push: true
-          target: prod
-          tags: koala007/a3_assignment:${{ github.ref_name }}
+            context: A3_KaungHtetCho/docker
+            file: Dockerfile
+            push: true
+            target: prod
+            tags: koala007/a3_assignment:${{ github.ref_name }}
 
   deploy:
     environment: Production
