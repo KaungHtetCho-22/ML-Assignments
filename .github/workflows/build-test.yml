@@ -4,8 +4,7 @@ run-name: ${{ github.actor }} Building and Testing
 on:
   push:
     tags:
-      - '*'
-
+      - "*"
 
 jobs:
   build-test:
@@ -33,8 +32,6 @@ jobs:
           images: koala007/a3_assignment
           tags: type=semver,pattern={{raw}}
 
-
-
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -42,16 +39,16 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: debug
-        run: ls -R A3_KaungHtetCho
-        
+        run: ls -al
+
       - name: Build and push Docker image (prod stage)
         uses: docker/build-push-action@v5
         with:
-            context: A3_KaungHtetCho
-            file: A3_KaungHtetCho/Dockerfile
-            push: true
-            target: prod
-            tags: koala007/a3_assignment:${{ github.ref_name }}
+          context: A3_KaungHtetCho
+          file: A3_KaungHtetCho/Dockerfile
+          push: true
+          target: prod
+          tags: koala007/a3_assignment:${{ github.ref_name }}
 
   deploy:
     environment: Production
