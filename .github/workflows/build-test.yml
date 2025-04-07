@@ -4,7 +4,7 @@ run-name: ${{ github.actor }} Building and Testing
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 
 
 jobs:
