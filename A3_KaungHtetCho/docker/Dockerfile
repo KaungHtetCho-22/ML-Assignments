@@ -34,6 +34,4 @@ COPY A3_KaungHtetCho /app
 
 ENV PYTHONPATH=/app
 
-# ENTRYPOINT ["/bin/bash", "-c"]
-
 CMD ["python", "app/app.py"]
